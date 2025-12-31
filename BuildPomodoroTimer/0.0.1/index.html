@@ -1,0 +1,375 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO Base -->
+    <title>Pomodoro Build Focus — Pomodoro timer for deep work & productivity</title>
+    <meta name="description" content="Boost focus with Pomodoro Build Focus — a simple and customizable Pomodoro timer to improve productivity and concentration through deep work and lofi music.">
+    <meta name="keywords" content="pomodoro timer, productivity, deep work, focus timer, study timer, lofi music">
+    <meta name="author" content="Pomodoro Build Focus">
+    <link rel="canonical" href="https://pomodorobuild.com/">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph (basic preview for Google and social) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Pomodoro Build Focus — Pomodoro timer for deep work & productivity">
+    <meta property="og:description" content="Boost your focus with Pomodoro Build Focus — a clean and customizable Pomodoro timer for productive work sessions.">
+    <meta property="og:url" content="https://pomodorobuild.com/">
+    <meta property="og:site_name" content="Pomodoro Build Focus">
+    <meta property="og:image" content="https://pomodorobuild.com/img/logo.png">
+
+
+    <!--style-->
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!--font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700;800&family=Abril+Fatface&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Jacques+Francois&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <!--bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+</head>
+<body>
+    
+    <!--preheader-->
+    <div class="d-flex justify-content-center align-items-center text-center pre-main-header">
+        <div class="d-flex flex-column align-items-center justify-content-center pre-header" >
+            <h1>POMODORO BUILD FOCUS</h1>
+            <div class="line-white1"></div>
+            <h4><span class="weight">M</span>aximize <span class="weight">Y</span>our <span class="weight">P</span>roductivity</h4>
+        </div>
+    </div>
+
+    <!--header-->
+    <div class="header d-flex justify-content-center align-items-center mx1">
+        <img src="./img/s1.svg" alt="sphere 1" class="bg-sphere s1">
+        <img src="./img/s2.svg" alt="sphere 2" class="bg-sphere s2">
+        <img src="./img/s4.svg" alt="sphere 4" class="bg-sphere s3">
+        <img src="./img/s5.svg" alt="sphere 5" class="bg-sphere s4">
+
+        
+        <div class="glass-cont gap-5">
+          <div class="d-flex flex-column button-cont">
+            <div class="set-timer-wrapper" style="position:relative;">
+              <button id="btn-set-timer" type="button" class="d-flex align-items-center justify-content-center gap-2 button-trasp button-set"
+                      aria-haspopup="true" aria-expanded="false" aria-controls="timer-dropdown">
+                <img src="./img/iconclock.svg" alt="clock icon" class="icon"> Set timer
+              </button>
+
+              <div id="timer-dropdown" class="timer-dropdown" role="dialog" aria-label="Impostazioni timer" aria-hidden="true">
+                  <form id="timer-dropdown-form" autocomplete="off" onsubmit="return false;">
+                    
+                    <div class="td-row d-flex align-items-center justify-content-between">
+                      <label for="td-total">Session number</label>
+                      <input id="td-total" name="total" type="number" min="1" value="4">
+                    </div>
+
+                    <div class="td-row d-flex align-items-center justify-content-between">
+                      <label for="td-work">Deep work (min)</label>
+                      <input id="td-work" name="work" type="number" min="1" value="25">
+                    </div>
+
+                    <div class="td-row d-flex align-items-center justify-content-between">
+                      <label for="td-short">Rest (min)</label>
+                      <input id="td-short" name="short" type="number" min="1" value="5">
+                    </div>
+
+                    <div class="black-line mx-auto"></div>
+
+                    <div class="td-row d-flex align-items-center justify-content-between">
+                      <label for="td-long-every">Interval long pause</label>
+                      <input id="td-long-every" name="longEvery" type="number" min="2" value="4">
+                    </div>
+
+                    <div class="td-row d-flex align-items-center justify-content-between">
+                      <label for="td-long">Long pause (min)</label>
+                      <input id="td-long" name="long" type="number" min="1" value="15">
+                    </div>
+
+                    <div class="td-actions">
+                      <button type="button" id="td-save" class="button-trasp b-invert">Save</button>
+                      <button type="button" id="td-cancel" class="button-trasp b-invert">Cancel</button>
+                    </div>
+
+                  </form>
+              </div>
+
+            </div>
+
+            <button id="scroll-lofi" type="button" class="d-flex align-items-center justify-content-center gap-2 button-trasp">
+              <img src="./img/iconcuffie.svg" alt="cuffie" class="icon">Lofi music
+            </button>
+
+            <button id="scroll-report" type="button" class="d-flex align-items-center justify-content-center gap-2 button-trasp">
+              <img src="./img/iconmail.svg" alt="mail" class="icon">Report bug
+            </button>
+
+            <!-- modifica il tuo bottone Custom aggiungendo id="btn-custom" -->
+            <button id="btn-custom" type="button" class="d-flex align-items-center justify-content-center gap-2 button-trasp">
+              <img src="./img/custom.svg" alt="custom" class="icon">Custom
+            </button>
+
+            
+
+
+          </div>
+
+          <div class="line-white2"></div>
+          <div class="line-white1 line-mob no-desk mob"></div>
+
+          <div class="time-cont d-flex flex-column gap-4">
+            <h4>DISCIPLINE</h4>
+
+            <div class="d-flex gap-5 cont-info-timer" aria-live="polite">
+              <p id="session-number">Session: 1</p>
+              <p class="status" id="phase-status">Deep work</p>
+            </div>
+
+            <p id="main-display-time">25:00</p>
+
+            <div class="d-flex gap-3 button-cont-mob">
+              <button type="button" class="button-trasp b-invert" id="btn-start">START</button>
+              <button type="button" class="button-trasp b-invert" id="btn-stop">STOP</button>
+              <button type="button" class="button-trasp b-invert" id="btn-reset">RESET</button>
+            </div>
+          </div>
+
+        </div>
+
+
+    </div>
+
+    <!--lofi music-->
+    <div id="lofi" class="d-flex flex-column justify-content-center align-items-center mx gap-4">
+      <div class="d-flex flex-column align-items-center justify-content-center cont-lofi-text gap-4">
+        <h4>relax with some lofi music</h4>
+        <p>Take a break from the hustle and bustle and let lofi music take center stage.
+           Click Play to find the perfect rhythm to focus, while maintaining calm and
+            creativity. Perfect for studying or working, this soundtrack will transform your
+             space into an oasis of concentration and relaxation.</p>
+      </div>
+
+      <div class="d-flex flex-column align-items-center gap-2">
+        <button id="lofi-toggle" class="d-flex align-items-center justify-content-center gap-2 button-trasp">
+          <img id="lofi-icon" src="./img/play.svg" alt="Play icon" class="icon icon-play">
+        </button>
+
+        <!-- Barra volume -->
+        <input type="range" id="lofi-volume" min="0" max="1" step="0.01" value="0.5" >
+
+      </div>
+
+
+    </div>
+
+    <!--paragrahp1-->
+    <div class="d-flex justify-content-center align-items-center cont-para ">
+      <div class="d-flex flex-column gap-4 cont-intern-para">
+        <h4>How to increase productivity?</h4>
+        <img src="./img/pc.svg" alt="computer" class="img-icon icon-mob no-desk mob icon-pc-mob">
+
+        <p>
+          Increasing productivity doesn't mean working more, but working better, with
+          intention and method. Establishing clear priorities and breaking complex
+          tasks into smaller steps helps reduce stress and maintain motivation.
+          Creating an orderly, distraction-free environment promotes concentration,
+          while taking short but regular breaks helps regenerate the mind and energy.
+          Properly planning your day allows you to balance commitments and long
+          -term goals, avoiding wasted time and procrastination. Using targeted tools
+          and techniques makes every activity more effective. With consistency and
+          discipline, productivity becomes a natural and sustainable habit.
+        </p>
+      </div>
+
+      <img src="./img/pc.svg" alt="computer" class="img-icon no-mob icon-pc">
+    </div>
+
+    <!--paragrahp1 invert-->
+    <div class="d-flex flex-row-reverse justify-content-center align-items-center cont-para-invert mx">
+
+      <div class="d-flex flex-column gap-4  cont-intern-para-invert">
+        <h4 class="text-end" >The art of Deep Work</h4>
+        <img src="./img/note.svg" alt="computer" class="img-icon icon-mob no-desk mob icon-note-mob">
+        <p>
+          Deep work is the art of immersing yourself in a state of total concentration, where
+          your mind and attention are dedicated to a single task without distractions. This
+          practice allows you to produce high-quality work in less time, transforming complexity
+          into concrete and meaningful results. To cultivate it, it's essential to eliminate
+          interruptions, create start and end session rituals, and carve out exclusive blocks
+          of time. Deep work isn't just a technique, but a mental training in discipline
+          and presence, which increases productivity and develops valuable skills.
+          It's the key to completing important projects and increasing personal satisfaction.
+        </p>
+      </div>
+
+      <img src="./img/note.svg" alt="computer" class="img-icon no-mob icon-note">
+    </div>
+
+    <!--Example routine-->
+    <div class="d-flex flex-column justify-content-center align-items-center mx-table gap-4 ">
+      <div class="d-flex flex-column align-items-center justify-content-center cont-lofi-text gap-4">
+        <h4>example of a student production routine</h4>
+        <p>Below you'll find an example of a grid designed to organize a productive routine. It's just a reference template, useful for inspiration and to adapt to your personal needs. It's not a universal solution, but a starting point for building your ideal method.</p>
+      </div>
+
+      
+      <!--table cont-->
+      <div class="header header-cor d-flex justify-content-center align-items-center mx1">
+          
+          <img src="./img/calendar.svg" alt="sphere 5" class="bg-sphere s3 bgc img-icon icon-calendar">
+          
+          <div class="glass-cont glass-cont-cor gap-5">
+            <table class="table  text-center">
+            <tr>
+              <th class="no-mob">Task</th>
+              <th class="text-start pds">Description</th>
+              <th>Deep work</th>
+              <th>Rest</th>
+            </tr>
+
+            <tr>
+              <th class="no-mob">1</th>
+              <th class="text-start pds">set session goals</th>
+              <th>10:00</th>
+              <th>5:00</th>
+            </tr>
+
+            <tr>
+              <th class="no-mob">2</th>
+              <th class="text-start pds">intense study</th>
+              <th>25:00</th>
+              <th>5:00</th>
+            </tr>
+
+            <tr>
+              <th class="no-mob">3</th>
+              <th class="text-start pds">intense study</th>
+              <th>25:00</th>
+              <th>5:00</th>
+            </tr>
+
+            <tr>
+              <th class="no-mob">4</th>
+              <th class="text-start pds">review of notes</th>
+              <th>25:00</th>
+              <th>10:00</th>
+            </tr>
+
+            <tr>
+              <th class="no-mob">5</th>
+              <th class="text-start pds">intense study</th>
+              <th>25:00</th>
+              <th>5:00</th>
+            </tr>
+
+            <tr>
+              <th class="no-mob">6</th>
+              <th class="text-start pds">intense study</th>
+              <th>25:00</th>
+              <th>5:00</th>
+            </tr>
+
+            <tr>
+              <th class="no-mob">7</th>
+              <th class="text-start pds">review of notes</th>
+              <th>25:00</th>
+              <th>10:00</th>
+            </tr>
+
+            <tr>
+              <th class="no-mob">8</th>
+              <th class="text-start pds">intense study</th>
+              <th>25:00</th>
+              <th>5:00</th>
+            </tr>
+
+            <tr>
+              <th class="no-mob">9</th>
+              <th class="text-start pds">intense study</th>
+              <th>25:00</th>
+              <th>5:00</th>
+            </tr>
+
+            <tr>
+              <th class="no-mob">7</th>
+              <th class="text-start pds">review of notes</th>
+              <th>25:00</th>
+              <th></th>
+            </tr>
+          </table>
+          </div>
+      </div>
+    </div>
+
+    <!--paragrahp1-->
+    <div class="d-flex justify-content-center align-items-center cont-para mx">
+      <div class="d-flex flex-column gap-4 cont-intern-para">
+        <h4>How to manage the rest time?</h4>
+      <img src="./img/clock.svg" alt="computer" class="img-icon icon-mob no-desk mob icon-clock-mob">
+        <p>
+          A Pomodoro's rest time is essential for regenerating energy and maintaining a
+          constant level of concentration. During these minutes, it's not enough to simply
+          step away from work; it's important to engage in activities that promote mental
+          recovery. A short walk, stretching exercises, or deep breathing help relax the
+          body and mind. Similarly, drinking a glass of water or opening your eyes reduces
+          fatigue and improves alertness. Avoiding distractions like social media or 
+          emails helps maintain the productive rhythm you've just established. Using
+          rest time as a reset allows you to face the next cycle with renewed energy and clarity.
+        </p>
+      </div>
+
+      <img src="./img/clock.svg" alt="computer" class="img-icon no-mob icon-clock">
+    </div>
+
+    <!--contatti e social-->
+    <div id="contatti" class="d-flex justify-content-center align-items-center cont-contatti-social mx">
+
+        <div class="cont-form d-flex flex-column gap-5">
+          <h2>Contact us to report bugs or improvements</h2>
+
+          <form class="d-flex flex-column gap-3 form" action="https://formspree.io/f/xpwydbby" method="POST">
+            <input type="email" name="email" placeholder="Email (optional)">
+            <textarea name="message" placeholder="Your report..."></textarea>
+            <p>We use your data only to respond. See our <a href="./privacy.html">Privacy Policy</a></p>
+            <button type="submit" class="align-self-center button-form button-trasp">Invia</button>
+          </form>
+        </div>
+
+
+        <div class="social-cont d-flex flex-column gap-3">
+            <div class="mail d-flex gap-3 align-items-center">
+              <img src="./img/mail.svg" alt="mail" class="icon-mail">
+              <a href="mailto:snarsbi09803@gmail.com">Snarsbi09803@gmail.com</a>
+            </div>
+
+            <div class="insta d-flex gap-3 align-items-center" >
+              <img src="./img/insta.svg" alt="instagram" class="icon-insta">
+              <a href="https://www.instagram.com/pomodoro_buildfocus/" target="_blank">@pomodoro_buildfocus</a>
+            </div>
+
+            <div class="line-white1 mob"></div>
+
+            <div class="insta insta-mx-top d-flex gap-3 align-items-center" >
+              <img src="./img/update.svg" alt="instagram" class="icon-update">
+              <a href="./pdf/UPDATE 0.0.1.pdf" download="UpdateVersionBuildPomodoroTimer.pdf">Update-pdf</a>
+            </div>
+
+        </div>
+
+    </div>
+    
+    <!--footer-->
+    <div class="glass-cont glass-cont-contatti d-flex justify-content-center align-items-center">
+      <p class="text-center" >&copy;2025 - Build - All rights reserved- version 0.0.1</p>
+    </div>
+
+
+
+
+    <script src="./script/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
